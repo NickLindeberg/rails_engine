@@ -1,6 +1,6 @@
-____ Wrote Tests
-____ Implemented
-____ Reviewed
+[] Wrote Tests
+[] Implemented
+[] Reviewed
 
 
 # Necessary checkmarks:
@@ -13,7 +13,6 @@ ____ Reviewed
 
 # Implements/Fixes:
 * description
-closes #
 
 # Check the correct boxes
 - [] This broke nothing
@@ -23,13 +22,5 @@ closes #
 # Testing Changes
 - [] No Tests have been changed
 - [] Some Tests have been changed
-- [] All of the Tests have been changed(Please describe what in the world happened)
-
-# Checklist:
-
-- [] My code has no unused/commented out code
-- [] I have reviewed my code
-- [] I have commented my code, particularly in hard-to-understand areas
-- [] I have fully tested my code
 
 # Please include a link to a gif of how you feel about this branch:

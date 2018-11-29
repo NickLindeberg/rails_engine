@@ -6,7 +6,7 @@ class Merchant < ApplicationRecord
   has_many :invoice_items, through: :invoices
 
   def self.top_rev_merchants
-    select("merchants.*, SUM(unit_price * quantity) AS rev")
+    Merchant.select("merchants.*, SUM(unit_price * quantity) AS rev")
     .joins(:invoice_items)
     .group(:id)
     .order("rev DESC")

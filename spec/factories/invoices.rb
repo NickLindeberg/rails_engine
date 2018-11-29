@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :invoice do
     status { "MyString" }
-    customer { nil }
-    transaction { nil }
+    customer { create(:customer) }
+    merchant { create(:merchant) }
   end
 end

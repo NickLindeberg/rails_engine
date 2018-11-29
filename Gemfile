@@ -14,6 +14,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'pry'
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'fast_jsonapi'
 
 end
 

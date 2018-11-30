@@ -11,6 +11,14 @@ describe 'Customers API' do
 
     expect(customer["id"]).to eq(cust_id)
   end
+  it 'finds customer by name' do
+    cust_name = create(:customer).first_name
+    get "/api/v1/customers/find?=#{cust_name}"
+    expect(response).to be_successful
 
-  
+    customer = JSON.parse(response.body)
+
+    expect(customer["first_name"]).to eq(cust_name)
+  end
+
 end

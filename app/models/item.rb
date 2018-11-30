@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   def self.best_day(x)
     Invoice.select("invoices.created_at, sum(invoice_items.quantity) AS units")
            .joins(:invoice_items)
-           .where("invoice_items.item_id = 1099")
+           .where("invoice_items.item_id = x")
            .group("invoices.id")
            .order("units desc, invoices.created_at desc")
            .limit(1)

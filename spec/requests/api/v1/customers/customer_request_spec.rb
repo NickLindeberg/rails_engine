@@ -12,14 +12,4 @@ describe 'Customers API' do
 
     expect(customers["data"].count).to eq(3)
   end
-  it 'sends info about one customer by its id' do
-    id = create(:customer).id
-
-    get "/api/v1/customers/#{id}"
-
-    customer = JSON.parse(response.body)
-
-    expect(response).to be_successful
-    expect(customer["data"]["id"]).to eq(id.to_s)
-  end
 end

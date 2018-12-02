@@ -34,7 +34,7 @@ describe Merchant, type: :model do
       create(:transaction, invoice_id: invoice_2.id)
       create(:transaction, invoice_id: invoice_3.id)
 
-      sorted_merchants = Merchant.top_rev_merchants
+      sorted_merchants = Merchant.top_rev_merchants(3)
 
       expect(sorted_merchants).to eq([merchant_1, merchant_2, merchant_3])
     end

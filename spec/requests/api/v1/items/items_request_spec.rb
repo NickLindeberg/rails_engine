@@ -12,14 +12,4 @@ describe 'Items API' do
 
     expect(items["data"].count).to eq(3)
   end
-  it 'sends info about one item by its id' do
-    id = create(:item).id
-
-    get "/api/v1/items/#{id}"
-
-    item = JSON.parse(response.body)
-
-    expect(response).to be_successful
-    expect(item["data"]["id"]).to eq(id.to_s)
-  end
 end

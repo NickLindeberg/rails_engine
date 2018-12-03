@@ -10,4 +10,6 @@ class Invoice < ApplicationRecord
   def self.top_five_invoices
     select(invoice.*, SUM())
   end
+
+  
 end

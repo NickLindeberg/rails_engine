@@ -6,47 +6,47 @@ describe 'Customers API' do
     get "/api/v1/customers/find?id=#{cust_id}"
     expect(response).to be_successful
 
-    customer = JSON.parse(response.body)
+    customer = JSON.parse(response.body)["data"]
 
-    expect(customer["id"]).to eq(cust_id)
+    expect(customer["id"]).to eq(cust_id.to_s)
   end
   it 'finds customer by first_name' do
-    cust_name = create(:customer).first_name
-    get "/api/v1/customers/find?=#{cust_name}"
+    cust_name = create(:customer)
+    get "/api/v1/customers/find?=#{cust_name.first_name}"
     expect(response).to be_successful
 
-    customer = JSON.parse(response.body)
+    customer = JSON.parse(response.body)["data"]
 
-    expect(customer["first_name"]).to eq(cust_name)
+    expect(customer["id"]).to eq(cust_name.id.to_s)
   end
 
   it 'finds customer by last_name' do
-    cust_last_name = create(:customer).last_name
-    get "/api/v1/customers/find?name=#{cust_last_name}"
+    cust_last_name = create(:customer)
+    get "/api/v1/customers/find?name=#{cust_last_name.last_name}"
     expect(response).to be_successful
 
-    customer = JSON.parse(response.body)
+    customer = JSON.parse(response.body)["data"]
 
-    expect(customer["last_name"]).to eq(cust_last_name)
+    expect(customer["id"]).to eq(cust_last_name.id.to_s)
   end
   it 'finds customer by created_at' do
-    cust_created = create(:customer, created_at: "2012-03-27 14:53:59 UTC").created_at
+    cust_created = create(:customer, created_at: "2012-03-27 14:53:59 UTC")
 
-    get "/api/v1/customers/find?created_at=#{cust_created}"
+    get "/api/v1/customers/find?created_at=#{cust_created.created_at}"
     expect(response).to be_successful
 
-    customer = JSON.parse(response.body)
+    customer = JSON.parse(response.body)["data"]
 
-    expect(customer["created_at"]).to eq("2012-03-27T14:53:59.000Z")
+    expect(customer["id"]).to eq(cust_created.id.to_s)
   end
   it 'finds customer by updated_at' do
-    cust_updated = create(:customer, updated_at: "2012-03-27 14:53:59 UTC").updated_at
-    get "/api/v1/customers/find?updated_at=#{cust_updated}"
+    cust_updated = create(:customer, updated_at: "2012-03-27 14:53:59 UTC")
+    get "/api/v1/customers/find?updated_at=#{cust_updated.updated_at}"
     expect(response).to be_successful
 
-    customer = JSON.parse(response.body)
+    customer = JSON.parse(response.body)["data"]
 
-    expect(customer["updated_at"]).to eq("2012-03-27T14:53:59.000Z")
+    expect(customer["id"]).to eq(cust_updated.id.to_s)
   end
 
   it 'finds all customers by id' do
@@ -56,9 +56,9 @@ describe 'Customers API' do
     get "/api/v1/customers/find_all?id=#{cust_1}"
     expect(response).to be_successful
 
-    customer = JSON.parse(response.body)
+    customer = JSON.parse(response.body)["data"]
 
-    expect(customer.first["id"]).to eq(cust_1)
+    expect(customer.first["id"]).to eq(cust_1.to_s)
     expect(customer.last["id"]).to_not eq(cust_2)
   end
 
@@ -70,9 +70,9 @@ describe 'Customers API' do
     get "/api/v1/customers/find_all?first_name=#{cust_1.first_name}"
     expect(response).to be_successful
 
-    customer = JSON.parse(response.body)
+    customer = JSON.parse(response.body)["data"]
 
-    expect(customer.first["id"]).to eq(cust_1.id)
+    expect(customer.first["id"]).to eq(cust_1.id.to_s.to_s)
     expect(customer.last["id"]).to_not eq(cust_3.id)
   end
 
@@ -84,9 +84,9 @@ describe 'Customers API' do
     get "/api/v1/customers/find_all?last_name=#{cust_1.last_name}"
     expect(response).to be_successful
 
-    customer = JSON.parse(response.body)
+    customer = JSON.parse(response.body)["data"]
 
-    expect(customer.first["id"]).to eq(cust_1.id)
+    expect(customer.first["id"]).to eq(cust_1.id.to_s)
     expect(customer.last["id"]).to_not eq(cust_3.id)
   end
 
@@ -98,9 +98,9 @@ describe 'Customers API' do
     get "/api/v1/customers/find_all?created_at=#{cust_1.created_at}"
     expect(response).to be_successful
 
-    customer = JSON.parse(response.body)
+    customer = JSON.parse(response.body)["data"]
 
-    expect(customer.first["id"]).to eq(cust_1.id)
+    expect(customer.first["id"]).to eq(cust_1.id.to_s)
     expect(customer.last["id"]).to_not eq(cust_3.id)
   end
 
@@ -112,9 +112,9 @@ describe 'Customers API' do
     get "/api/v1/customers/find_all?updated_at=#{cust_1.updated_at}"
     expect(response).to be_successful
 
-    customer = JSON.parse(response.body)
+    customer = JSON.parse(response.body)["data"]
 
-    expect(customer.first["id"]).to eq(cust_1.id)
+    expect(customer.first["id"]).to eq(cust_1.id.to_s)
     expect(customer.last["id"]).to_not eq(cust_3.id)
   end
 end

@@ -7,10 +7,10 @@ describe 'Item API' do
     get "/api/v1/items/find?id=#{item_1.id}"
     expect(response).to be_successful
 
-    item = JSON.parse(response.body)
+    item = JSON.parse(response.body)["data"]
 
-    expect(item["id"]).to eq(item_1.id)
-    expect(item["id"]).to_not eq(item_2.id)
+    expect(item["id"]).to eq(item_1.id.to_s)
+    expect(item["id"]).to_not eq(item_2.id.to_s)
   end
 
   it 'finds Item by name' do
@@ -19,10 +19,10 @@ describe 'Item API' do
     get "/api/v1/items/find?name=#{item_1.name}"
     expect(response).to be_successful
 
-    item = JSON.parse(response.body)
+    item = JSON.parse(response.body)["data"]
 
-    expect(item["id"]).to eq(item_1.id)
-    expect(item["id"]).to_not eq(item_2.id)
+    expect(item["id"]).to eq(item_1.id.to_s)
+    expect(item["id"]).to_not eq(item_2.id.to_s)
   end
 
   it 'finds Item by description' do
@@ -31,10 +31,10 @@ describe 'Item API' do
     get "/api/v1/items/find?description=#{item_1.description}"
     expect(response).to be_successful
 
-    item = JSON.parse(response.body)
+    item = JSON.parse(response.body)["data"]
 
-    expect(item["id"]).to eq(item_1.id)
-    expect(item["id"]).to_not eq(item_2.id)
+    expect(item["id"]).to eq(item_1.id.to_s)
+    expect(item["id"]).to_not eq(item_2.id.to_s)
   end
 
   it 'finds Item by unit_price' do
@@ -43,10 +43,10 @@ describe 'Item API' do
     get "/api/v1/items/find?unit_price=#{item_1.unit_price}"
     expect(response).to be_successful
 
-    item = JSON.parse(response.body)
+    item = JSON.parse(response.body)["data"]
 
-    expect(item["id"]).to eq(item_1.id)
-    expect(item["id"]).to_not eq(item_2.id)
+    expect(item["id"]).to eq(item_1.id.to_s)
+    expect(item["id"]).to_not eq(item_2.id.to_s)
   end
 
   it 'finds Item by created_at' do
@@ -55,10 +55,10 @@ describe 'Item API' do
     get "/api/v1/items/find?created_at=#{item_1.created_at}"
     expect(response).to be_successful
 
-    item = JSON.parse(response.body)
+    item = JSON.parse(response.body)["data"]
 
-    expect(item["id"]).to eq(item_1.id)
-    expect(item["id"]).to_not eq(item_2.id)
+    expect(item["id"]).to eq(item_1.id.to_s)
+    expect(item["id"]).to_not eq(item_2.id.to_s)
   end
 
   it 'finds Item by updated_at' do
@@ -67,10 +67,10 @@ describe 'Item API' do
     get "/api/v1/items/find?updated_at=#{item_1.updated_at}"
     expect(response).to be_successful
 
-    item = JSON.parse(response.body)
+    item = JSON.parse(response.body)["data"]
 
-    expect(item["id"]).to eq(item_1.id)
-    expect(item["id"]).to_not eq(item_2.id)
+    expect(item["id"]).to eq(item_1.id.to_s)
+    expect(item["id"]).to_not eq(item_2.id.to_s)
   end
 
   it 'finds all Items by id' do
@@ -79,10 +79,10 @@ describe 'Item API' do
     get "/api/v1/items/find_all?id=#{item_1.id}"
     expect(response).to be_successful
 
-    items = JSON.parse(response.body)
+    items = JSON.parse(response.body)["data"]
 
-    expect(items.first["id"]).to eq(item_1.id)
-    expect(items.last["id"]).to_not eq(item_2.id)
+    expect(items.first["id"]).to eq(item_1.id.to_s)
+    expect(items.last["id"]).to_not eq(item_2.id.to_s)
     expect(items.count).to eq(1)
   end
 
@@ -93,10 +93,10 @@ describe 'Item API' do
     get "/api/v1/items/find_all?name=#{item_1.name}"
     expect(response).to be_successful
 
-    items = JSON.parse(response.body)
+    items = JSON.parse(response.body)["data"]
 
-    expect(items.first["id"]).to eq(item_1.id)
-    expect(items.last["id"]).to_not eq(item_3.id)
+    expect(items.first["id"]).to eq(item_1.id.to_s)
+    expect(items.last["id"]).to_not eq(item_3.id.to_s)
     expect(items.count).to eq(2)
   end
 
@@ -107,10 +107,10 @@ describe 'Item API' do
     get "/api/v1/items/find_all?description=#{item_1.description}"
     expect(response).to be_successful
 
-    items = JSON.parse(response.body)
+    items = JSON.parse(response.body)["data"]
 
-    expect(items.first["id"]).to eq(item_1.id)
-    expect(items.last["id"]).to_not eq(item_3.id)
+    expect(items.first["id"]).to eq(item_1.id.to_s)
+    expect(items.last["id"]).to_not eq(item_3.id.to_s)
     expect(items.count).to eq(2)
   end
 
@@ -121,10 +121,10 @@ describe 'Item API' do
     get "/api/v1/items/find_all?unit_price=#{item_1.unit_price}"
     expect(response).to be_successful
 
-    items = JSON.parse(response.body)
+    items = JSON.parse(response.body)["data"]
 
-    expect(items.first["id"]).to eq(item_1.id)
-    expect(items.last["id"]).to_not eq(item_3.id)
+    expect(items.first["id"]).to eq(item_1.id.to_s)
+    expect(items.last["id"]).to_not eq(item_3.id.to_s)
     expect(items.count).to eq(2)
   end
 
@@ -135,10 +135,10 @@ describe 'Item API' do
     get "/api/v1/items/find_all?created_at=#{item_1.created_at}"
     expect(response).to be_successful
 
-    items = JSON.parse(response.body)
+    items = JSON.parse(response.body)["data"]
 
-    expect(items.first["id"]).to eq(item_1.id)
-    expect(items.last["id"]).to_not eq(item_3.id)
+    expect(items.first["id"]).to eq(item_1.id.to_s)
+    expect(items.last["id"]).to_not eq(item_3.id.to_s)
     expect(items.count).to eq(2)
   end
 
@@ -149,10 +149,10 @@ describe 'Item API' do
     get "/api/v1/items/find_all?updated_at=#{item_1.updated_at}"
     expect(response).to be_successful
 
-    items = JSON.parse(response.body)
+    items = JSON.parse(response.body)["data"]
 
-    expect(items.first["id"]).to eq(item_1.id)
-    expect(items.last["id"]).to_not eq(item_3.id)
+    expect(items.first["id"]).to eq(item_1.id.to_s)
+    expect(items.last["id"]).to_not eq(item_3.id.to_s)
     expect(items.count).to eq(2)
   end
 end

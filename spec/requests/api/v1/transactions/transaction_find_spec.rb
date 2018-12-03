@@ -7,10 +7,10 @@ describe 'Transactions API' do
     get "/api/v1/transactions/find?id=#{transaction_1.id}"
     expect(response).to be_successful
 
-    transaction = JSON.parse(response.body)
+    transaction = JSON.parse(response.body)["data"]
 
-    expect(transaction["id"]).to eq(transaction_1.id)
-    expect(transaction["id"]).to_not eq(transaction_2.id)
+    expect(transaction["id"]).to eq(transaction_1.id.to_s)
+    expect(transaction["id"]).to_not eq(transaction_2.id.to_s)
   end
 
   it 'finds transaction by credit_card_number' do
@@ -19,10 +19,10 @@ describe 'Transactions API' do
     get "/api/v1/transactions/find?credit_card_number=#{transaction_1.credit_card_number}"
     expect(response).to be_successful
 
-    transaction = JSON.parse(response.body)
+    transaction = JSON.parse(response.body)["data"]
 
-    expect(transaction["id"]).to eq(transaction_1.id)
-    expect(transaction["id"]).to_not eq(transaction_2.id)
+    expect(transaction["id"]).to eq(transaction_1.id.to_s)
+    expect(transaction["id"]).to_not eq(transaction_2.id.to_s)
   end
 
   it 'finds transaction by result' do
@@ -31,10 +31,10 @@ describe 'Transactions API' do
     get "/api/v1/transactions/find?result=#{transaction_1.result}"
     expect(response).to be_successful
 
-    transaction = JSON.parse(response.body)
+    transaction = JSON.parse(response.body)["data"]
 
-    expect(transaction["id"]).to eq(transaction_1.id)
-    expect(transaction["id"]).to_not eq(transaction_2.id)
+    expect(transaction["id"]).to eq(transaction_1.id.to_s)
+    expect(transaction["id"]).to_not eq(transaction_2.id.to_s)
   end
 
   it 'finds transaction by created_at' do
@@ -43,10 +43,10 @@ describe 'Transactions API' do
     get "/api/v1/transactions/find?created_at=#{transaction_1.created_at}"
     expect(response).to be_successful
 
-    transaction = JSON.parse(response.body)
+    transaction = JSON.parse(response.body)["data"]
 
-    expect(transaction["id"]).to eq(transaction_1.id)
-    expect(transaction["id"]).to_not eq(transaction_2.id)
+    expect(transaction["id"]).to eq(transaction_1.id.to_s)
+    expect(transaction["id"]).to_not eq(transaction_2.id.to_s)
   end
 
   it 'finds transaction by updated_at' do
@@ -55,10 +55,10 @@ describe 'Transactions API' do
     get "/api/v1/transactions/find?updated_at=#{transaction_1.updated_at}"
     expect(response).to be_successful
 
-    transaction = JSON.parse(response.body)
+    transaction = JSON.parse(response.body)["data"]
 
-    expect(transaction["id"]).to eq(transaction_1.id)
-    expect(transaction["id"]).to_not eq(transaction_2.id)
+    expect(transaction["id"]).to eq(transaction_1.id.to_s)
+    expect(transaction["id"]).to_not eq(transaction_2.id.to_s)
   end
 
   it 'finds all transactions by id' do
@@ -67,10 +67,10 @@ describe 'Transactions API' do
     get "/api/v1/transactions/find_all?id=#{transaction_1.id}"
     expect(response).to be_successful
 
-    transactions = JSON.parse(response.body)
+    transactions = JSON.parse(response.body)["data"]
 
-    expect(transactions.first["id"]).to eq(transaction_1.id)
-    expect(transactions.last["id"]).to_not eq(transaction_2.id)
+    expect(transactions.first["id"]).to eq(transaction_1.id.to_s)
+    expect(transactions.last["id"]).to_not eq(transaction_2.id.to_s)
     expect(transactions.count).to eq(1)
   end
 
@@ -81,10 +81,10 @@ describe 'Transactions API' do
     get "/api/v1/transactions/find_all?credit_card_number=#{transaction_1.credit_card_number}"
     expect(response).to be_successful
 
-    transactions = JSON.parse(response.body)
+    transactions = JSON.parse(response.body)["data"]
 
-    expect(transactions.first["id"]).to eq(transaction_1.id)
-    expect(transactions.last["id"]).to_not eq(transaction_3.id)
+    expect(transactions.first["id"]).to eq(transaction_1.id.to_s)
+    expect(transactions.last["id"]).to_not eq(transaction_3.id.to_s)
     expect(transactions.count).to eq(2)
   end
   it 'finds all transactions by result' do
@@ -94,10 +94,10 @@ describe 'Transactions API' do
     get "/api/v1/transactions/find_all?result=#{transaction_1.result}"
     expect(response).to be_successful
 
-    transactions = JSON.parse(response.body)
+    transactions = JSON.parse(response.body)["data"]
 
-    expect(transactions.first["id"]).to eq(transaction_1.id)
-    expect(transactions.last["id"]).to_not eq(transaction_3.id)
+    expect(transactions.first["id"]).to eq(transaction_1.id.to_s)
+    expect(transactions.last["id"]).to_not eq(transaction_3.id.to_s)
     expect(transactions.count).to eq(2)
   end
 
@@ -108,10 +108,10 @@ describe 'Transactions API' do
     get "/api/v1/transactions/find_all?created_at=#{transaction_1.created_at}"
     expect(response).to be_successful
 
-    transactions = JSON.parse(response.body)
+    transactions = JSON.parse(response.body)["data"]
 
-    expect(transactions.first["id"]).to eq(transaction_1.id)
-    expect(transactions.last["id"]).to_not eq(transaction_3.id)
+    expect(transactions.first["id"]).to eq(transaction_1.id.to_s)
+    expect(transactions.last["id"]).to_not eq(transaction_3.id.to_s)
     expect(transactions.count).to eq(2)
   end
 
@@ -122,10 +122,10 @@ describe 'Transactions API' do
     get "/api/v1/transactions/find_all?updated_at=#{transaction_1.updated_at}"
     expect(response).to be_successful
 
-    transactions = JSON.parse(response.body)
+    transactions = JSON.parse(response.body)["data"]
 
-    expect(transactions.first["id"]).to eq(transaction_1.id)
-    expect(transactions.last["id"]).to_not eq(transaction_3.id)
+    expect(transactions.first["id"]).to eq(transaction_1.id.to_s)
+    expect(transactions.last["id"]).to_not eq(transaction_3.id.to_s)
     expect(transactions.count).to eq(2)
   end
 end

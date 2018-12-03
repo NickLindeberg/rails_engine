@@ -6,4 +6,9 @@ class Transaction < ApplicationRecord
   scope :successful, -> { where(result: "success") }
 
   default_scope { order(:id)}
+
+  def self.transaction_by_cust(id)
+    Transaction.joins(:invoices)
+               .where("invoices.customer_id = #{id}")
+  end
 end

@@ -21,47 +21,47 @@ Rales(Rails) Engine.  Lets play with some JSON!
 - /api/v1/invoices.json (gives a list of all invoices)
 - /api/v1/invoices/1.json (gives one invoice)
 
-###Invoice Items
+### Invoice Items
 - /api/v1/invoice_items.json (gives a list of all invoice_items)
 - /api/v1/invoice_items/1.json (gives one invoice_item)
 
-###Items
+### Items
 - /api/v1/items.json (gives a list of all items)
 - /api/v1/items/1.json (gives one item)
 
-###Transactions
+### Transactions
 - /api/v1/transactions.json (gives a list of all transactions)
 - /api/v1/transactions/1.json (gives one transaction)
 
-###Customers
+### Customers
 - /api/v1/customers.json (gives a list of all customers)
 - /api/v1/customers.json (gives one customer)
 
-##Relationship Endpoints
+## Relationship Endpoints
 
-###Merchants
+### Merchants
 - /api/v1/merchants/:id/items (returns a collection of items associated with that merchant)
 - api/v1/merchants/:id/invoices (returns a collection of invoices associated with that merchant from their known orders)
 
-###Invoices
+### Invoices
 - /api/v1/invoices/:id/transactions (returns a collection of associated transactions)
 - /api/v1/invoices/:id/invoice_items (returns a collection of associated invoice items)
 - /api/v1/invoices/:id/items (returns a collection of associated items)
 - /api/v1/invoices/:id/customer (returns the associated customer)
 - /api/v1/invoices/:id/merchant (returns the associated merchant)
 
-###Invoice Items
+### Invoice Items
 - /api/v1/invoice_items/:id/invoice (returns the associated invoice)
 - /api/v1/invoice_items/:id/item (returns the associated item)
 
-###Items
+### Items
 - /api/v1/items/:id/invoice_items (returns a collection of associated invoice items)
 - /api/v1/items/:id/merchant (returns the associated merchant)
 
-###Transactions
+### Transactions
 - /api/v1/transactions/:id/invoice (returns the associated invoice)
 
-###Customers
+### Customers
 - /api/v1/customers/:id/invoices (returns a collection of associated invoices)
 - /api/v1/customers/:id/transactions (returns a collection of associated transactions)
 

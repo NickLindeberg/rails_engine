@@ -7,10 +7,10 @@ describe 'Invoice API' do
     get "/api/v1/invoices/find?id=#{invoice_1.id}"
     expect(response).to be_successful
 
-    invoice = JSON.parse(response.body)
+    invoice = JSON.parse(response.body)["data"]
 
-    expect(invoice["id"]).to eq(invoice_1.id)
-    expect(invoice["id"]).to_not eq(invoice_2.id)
+    expect(invoice["id"]).to eq(invoice_1.id.to_s)
+    expect(invoice["id"]).to_not eq(invoice_2.id.to_s)
   end
 
   it 'finds Invoice by status' do
@@ -19,10 +19,10 @@ describe 'Invoice API' do
     get "/api/v1/invoices/find?status=#{invoice_1.status}"
     expect(response).to be_successful
 
-    invoice = JSON.parse(response.body)
+    invoice = JSON.parse(response.body)["data"]
 
-    expect(invoice["id"]).to eq(invoice_1.id)
-    expect(invoice["id"]).to_not eq(invoice_2.id)
+    expect(invoice["id"]).to eq(invoice_1.id.to_s)
+    expect(invoice["id"]).to_not eq(invoice_2.id.to_s)
   end
 
   it 'finds Invoice by created_at' do
@@ -31,10 +31,10 @@ describe 'Invoice API' do
     get "/api/v1/invoices/find?created_at=#{invoice_1.created_at}"
     expect(response).to be_successful
 
-    invoice = JSON.parse(response.body)
+    invoice = JSON.parse(response.body)["data"]
 
-    expect(invoice["id"]).to eq(invoice_1.id)
-    expect(invoice["id"]).to_not eq(invoice_2.id)
+    expect(invoice["id"]).to eq(invoice_1.id.to_s)
+    expect(invoice["id"]).to_not eq(invoice_2.id.to_s)
   end
 
   it 'finds Invoice by updated_at' do
@@ -43,10 +43,10 @@ describe 'Invoice API' do
     get "/api/v1/invoices/find?updated_at=#{invoice_1.updated_at}"
     expect(response).to be_successful
 
-    invoice = JSON.parse(response.body)
+    invoice = JSON.parse(response.body)["data"]
 
-    expect(invoice["id"]).to eq(invoice_1.id)
-    expect(invoice["id"]).to_not eq(invoice_2.id)
+    expect(invoice["id"]).to eq(invoice_1.id.to_s)
+    expect(invoice["id"]).to_not eq(invoice_2.id.to_s)
   end
 
   it 'finds all Invoices by id' do
@@ -55,10 +55,10 @@ describe 'Invoice API' do
     get "/api/v1/invoices/find_all?id=#{invoice_1.id}"
     expect(response).to be_successful
 
-    invoices = JSON.parse(response.body)
+    invoices = JSON.parse(response.body)["data"]
 
-    expect(invoices.first["id"]).to eq(invoice_1.id)
-    expect(invoices.last["id"]).to_not eq(invoice_2.id)
+    expect(invoices.first["id"]).to eq(invoice_1.id.to_s)
+    expect(invoices.last["id"]).to_not eq(invoice_2.id.to_s)
     expect(invoices.count).to eq(1)
   end
 
@@ -69,10 +69,10 @@ describe 'Invoice API' do
     get "/api/v1/invoices/find_all?status=#{invoice_1.status}"
     expect(response).to be_successful
 
-    invoices = JSON.parse(response.body)
+    invoices = JSON.parse(response.body)["data"]
 
-    expect(invoices.first["id"]).to eq(invoice_1.id)
-    expect(invoices.last["id"]).to_not eq(invoice_3.id)
+    expect(invoices.first["id"]).to eq(invoice_1.id.to_s)
+    expect(invoices.last["id"]).to_not eq(invoice_3.id.to_s)
     expect(invoices.count).to eq(2)
   end
 
@@ -83,10 +83,10 @@ describe 'Invoice API' do
     get "/api/v1/invoices/find_all?created_at=#{invoice_1.created_at}"
     expect(response).to be_successful
 
-    invoices = JSON.parse(response.body)
+    invoices = JSON.parse(response.body)["data"]
 
-    expect(invoices.first["id"]).to eq(invoice_1.id)
-    expect(invoices.last["id"]).to_not eq(invoice_3.id)
+    expect(invoices.first["id"]).to eq(invoice_1.id.to_s)
+    expect(invoices.last["id"]).to_not eq(invoice_3.id.to_s)
     expect(invoices.count).to eq(2)
   end
 
@@ -97,10 +97,10 @@ describe 'Invoice API' do
     get "/api/v1/invoices/find_all?updated_at=#{invoice_1.updated_at}"
     expect(response).to be_successful
 
-    invoices = JSON.parse(response.body)
+    invoices = JSON.parse(response.body)["data"]
 
-    expect(invoices.first["id"]).to eq(invoice_1.id)
-    expect(invoices.last["id"]).to_not eq(invoice_3.id)
+    expect(invoices.first["id"]).to eq(invoice_1.id.to_s)
+    expect(invoices.last["id"]).to_not eq(invoice_3.id.to_s)
     expect(invoices.count).to eq(2)
   end
 end

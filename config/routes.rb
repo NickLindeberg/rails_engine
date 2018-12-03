@@ -21,6 +21,7 @@ Rails.application.routes.draw do
         get '/find', to: 'item_find#show'
         get '/find_all', to: 'item_find#index'
         get '/random', to: 'item_random#show'
+        get '/best_day' to: 'item_best_day#show'
       end
       scope module: 'items' do
         resources :items do
